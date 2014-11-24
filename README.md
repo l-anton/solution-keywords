@@ -13,16 +13,19 @@ This HTTP POST service has a unique method : **message**. The keywords must be s
   
   
 ## Monitoring API
-This HTTP GET service has three methods : **topkwds topips ipsforkwd**  
+This HTTP GET service has three methods : **topkwds, topips, ipsforkwd**  
   
-1. topkwds  
+1. *topkwds*  
 Returns top 10 keywords extracted from messages  
+  
     curl http://0.0.0.0:8081/topkwds  
   
-2. topips  
-Returns list of top 10 IPs which have sent messages with related top 10 keywords
+2. *topips*  
+Returns list of top 10 IPs which have sent messages with related top 10 keywords  
+  
     curl http://0.0.0.0:8081/topips  
   
-3. ipsforkwd  
+3. *ipsforkwd*  
 Returns list of IPs ordered by descending usage for a given keyword. The keyword must be queried via a field **kwd**  
+  
     curl http://0.0.0.0:8081/ipsforkwd?kwd=cinema

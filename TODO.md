@@ -1,7 +1,7 @@
 
 ## Improvements  
 
-**Intelligence**
+**Intelligence**  
 Auto-detect keywords separator  
 Merge singular and plural of keywords  
 
@@ -13,6 +13,6 @@ Bound documents growth (implications on find requests)
 **Network**  
 End connections arbitrarily if messages too long  
   
-**Interface**
+**Interface**  
 Merge two services (post and get) in a single server  
 Identify senders before accepting messages  
