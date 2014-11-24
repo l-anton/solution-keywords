@@ -17,15 +17,10 @@ This HTTP GET service has three methods : **topkwds, topips, ipsforkwd**
   
 1. *topkwds*  
 Returns top 10 keywords extracted from messages  
-  
-    curl http://0.0.0.0:8081/topkwds  
-  
+   
 2. *topips*  
 Returns list of top 10 IPs which have sent messages with related top 10 keywords  
-  
-    curl http://0.0.0.0:8081/topips  
   
 3. *ipsforkwd*  
 Returns list of IPs ordered by descending usage for a given keyword. The keyword must be queried via a field **kwd**  
   
-    curl http://0.0.0.0:8081/ipsforkwd?kwd=cinema
