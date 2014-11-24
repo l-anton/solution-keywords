@@ -1,4 +1,4 @@
-# How to install and run APIs on Amazon Linux
+# How to install and run on Amazon Linux
 
 sudo yum update  
 sudo yum install gcc-c++ make  
