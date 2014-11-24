@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Stops POST API
+./node_modules/forever/bin/forever stop post_api.js 

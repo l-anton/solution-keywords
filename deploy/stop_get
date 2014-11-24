@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Stops GET API
+./node_modules/forever/bin/forever stop get_api.js 
