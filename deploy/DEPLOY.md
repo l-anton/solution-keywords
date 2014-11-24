@@ -35,7 +35,7 @@ sudo vi /etc/yum.repos.d/mongodb.repo
 sudo yum install -y mongodb-org  
 sudo service mongod start  
   
-**Upload get_api.js post_api.js start_get start_post stop_get stop_post**  
+**Upload get_api.js, post_api.js, start_get, start_post, stop_get, stop_post**  
   
 sudo ./start_post  
 sudo ./start_get  
