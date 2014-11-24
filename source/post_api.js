@@ -5,7 +5,7 @@ var qs = require('querystring');
 
 //Database setup
 var databaseUrl = 'mongodb://localhost:27017';
-var collections = ['keywords', 'ips']; //TO DO : avoid duplicating data
+var collections = ['keywords', 'ips'];
 var db = require('mongojs').connect(databaseUrl, collections);
 
 //Misc messages
@@ -78,11 +78,10 @@ var server = http.createServer(function(req, res) {
         var text = '';   
         req.on('data', function (data) {
             text += data;
-            // TO DO : end connection arbitrarily if data too large
         });
         req.on('end', function () {
             var post = qs.parse(text);
-            if ('keywords' in post) { //TO DO : idenfify senders (on IP address for instance)
+            if ('keywords' in post) {
                 var keywords_array = post['keywords'].split(keywords_separator);
                 update_db(keywords_array, ipAddress, update_kwd, update_ip);               
                 res.writeHead(200, {'Content-Type': 'text/plain'});

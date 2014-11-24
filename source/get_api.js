@@ -5,14 +5,14 @@ var qs = require('querystring');
 
 //Database setup
 var databaseUrl = 'mongodb://localhost:27017';
-var collections = ['keywords', 'ips']; //TO DO : avoid duplicating data
+var collections = ['keywords', 'ips'];
 var db = require('mongojs').connect(databaseUrl, collections);
 
 //Misc messages
 var apiErrMsg_api = 'Bad API method' + '\n';
 var apiErrMsg_query = 'Bad query format' + '\n';
 
-//Auxiliary function : takes an array of elements with duplicated, returns deduplicated array sorted by frequency
+//Auxiliary : takes an array of elements with duplicated, returns deduplicated array sorted by frequency
 function deduplicateAndSort(array) {
     function find_mode(arr) {
         var mode = {};
@@ -42,19 +42,19 @@ function deduplicateAndSort(array) {
     return output
 };
 
-//Call db for top keywords
+//Calls db for top keywords
 function get_topkwds(callback) {
     db.keywords.find({}).sort({ kwd_cnt: -1 }).limit(10).toArray( function(err, docs) {
         callback(docs);
     });
 };
-//Call db for top IPs
+//Calls db for top IPs
 function get_topips(callback) {
     db.ips.find({}).sort({ ip_cnt: -1 }).limit(10).toArray( function(err, docs) {
         callback(docs);
     });
 };
-//Call db for IP
+//Calls db for IP
 function get_ipsforkwd(kwd, callback) {
     var cursor = db.keywords.find( { keyword: kwd } );
     cursor.count( function(err, count) {
