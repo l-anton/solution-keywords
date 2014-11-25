@@ -25,7 +25,7 @@ sudo npm install forever
 sudo npm install mongojs  
 sudo vi /etc/yum.repos.d/mongodb.repo  
   
-**Edit as follows and close with : <ESC> :wq! <ENTER>**  
+**Edit as follows and close with "*ESC* :wq! *ENTER*"**  
 *[mongodb]*  
 *name=MongoDB Repository*  
 *baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64/*  
