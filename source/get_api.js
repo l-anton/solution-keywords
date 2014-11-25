@@ -137,6 +137,11 @@ var server = http.createServer(function(req, res) {
             res.end();
         }
     }
+    else if (req.method == 'GET' & api == '/') {
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.write('Welcome !' + '\n');
+        res.end();
+    }
     else {
         res.writeHead(400, {'Content-Type': 'text/plain'});
         res.write(apiErrMsg_api);
