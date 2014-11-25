@@ -92,24 +92,24 @@ var server = http.createServer(function(req, res) {
     var api = root.pathname;
 
     if (req.method == 'GET' & api == '/topkwds') {
-        get_topkwds(function(docs) {
-            var data = '';
-            for (i=0; i<docs.length; i++) {
-                data += docs[i]["keyword"] + ' ';
-            }
+        get_topkwds( function(docs) {
+            var kwds = '';
+            for (var i in docs) {
+                kwds += docs[i]["keyword"] + ' ';
+            };
             res.writeHead(200, {'Content-Type': 'text/plain'});
-            res.write(data + '\n');
+            res.write(kwds + '\n');
             res.end();
         });
     }
     else if (req.method == 'GET' & api == '/topips') {
-        get_topips(function(docs) {
-            var data = '';
-            for (i=0; i<docs.length; i++) {
-                data += docs[i]["ip"] + '\n' + deduplicateAndSort(docs[i]["kwd_list"], 10) + '\n';
-            }
+        get_topips( function(docs) {
+            var ips = '';
+            for (var i in docs) {
+                ips += docs[i]["ip"] + '\n' + deduplicateAndSort(docs[i]["kwd_list"], 10) + '\n';
+            };
             res.writeHead(200, {'Content-Type': 'text/plain'});
-            res.write(data);
+            res.write(ips);
             res.end();
         });
     }
