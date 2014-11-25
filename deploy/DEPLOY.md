@@ -40,7 +40,7 @@ sudo service mongod start
 sudo ./start_post  
 sudo ./start_get  
   
-**Check that Node processes are running on ports 8080 and 8081 and MongoDB on port 27017**  
+**Check that Node processes are running on ports 8080 and 80 and MongoDB on port 27017**  
 ss -nltp  
   
   
