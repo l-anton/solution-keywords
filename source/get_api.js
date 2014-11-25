@@ -89,7 +89,7 @@ var server = http.createServer(function(req, res) {
         get_topips(function(docs) {
             var data = '';
             for (i=0; i<docs.length; i++) {
-                data += docs[i]["ip"] + '\n' + deduplicateAndSort(docs[i]["kwd_list"]).splice(0,10) + '\n';
+                data += docs[i]["ip"] + '\n' + deduplicateAndSort(docs[i]["kwd_list"]).slice(0,10) + '\n';
             }
             res.writeHead(200, {'Content-Type': 'text/plain'});
             res.write(data);
