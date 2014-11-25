@@ -4,6 +4,7 @@
 **Intelligence**  
 Auto-detect keywords separator  
 Merge singular and plural of keywords  
+Auto filter punctuation  
 
 **Storage**  
 Put mongo in RAM for better write performances  
