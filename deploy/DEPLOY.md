@@ -14,7 +14,7 @@ cd ..
 sudo su  
 vi /etc/sudoers  
   
-**Insert ":/usr/local/bin" at the end of the "Default secure_path = ..." and close with : <ESC> :wq! <ENTER>**  
+**Insert ":/usr/local/bin" at the end of the "Default secure_path = ..." and close with "<ESC> :wq! <ENTER>"**  
   
 exit  
 git clone https://github.com/isaacs/npm.git  
