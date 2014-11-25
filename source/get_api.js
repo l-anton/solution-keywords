@@ -13,7 +13,7 @@ var apiErrMsg_api = 'Bad API method' + '\n';
 var apiErrMsg_query = 'Bad query format' + '\n';
 
 //Auxiliary : takes an array of elements with duplicated, returns deduplicated array sorted by frequency
-function deduplicateAndSort(array) {
+function deduplicateAndSort(array, limit) {
     function find_mode(arr) {
         var mode = {};
         var max = 0, count = 0;
@@ -29,17 +29,34 @@ function deduplicateAndSort(array) {
         });        
         return max;
     };
-    var output = '';
-    while (array.length > 0) {
-        var m = find_mode(array);
-        output += m + '\n';
-        var idx = array.indexOf(m);
-        while (idx >= 0) {
-            array.splice(idx, 1);
-            idx = array.indexOf(m);
+    var output_array = [];
+    if (limit > 0) {
+        while (array.length > 0 && output_array.length < limit) {
+            var m = find_mode(array);
+            output_array.push(m);
+            var idx = array.indexOf(m);
+            while (idx >= 0) {
+                array.splice(idx, 1);
+                idx = array.indexOf(m);
+            };
         };
-    };
-    return output
+    }
+    else {
+        while (array.length > 0) {
+            var m = find_mode(array);
+            output_array.push(m);
+            var idx = array.indexOf(m);
+            while (idx >= 0) {
+                array.splice(idx, 1);
+                idx = array.indexOf(m);
+            };
+        };
+    }
+    var ouput_string = ''
+    for (i=0; i<output_array.length; i++) {
+        ouput_string += output_array[i] + '\n';
+    }
+    return ouput_string
 };
 
 //Calls db for top keywords
@@ -89,7 +106,7 @@ var server = http.createServer(function(req, res) {
         get_topips(function(docs) {
             var data = '';
             for (i=0; i<docs.length; i++) {
-                data += docs[i]["ip"] + '\n' + deduplicateAndSort(docs[i]["kwd_list"]).slice(0,10) + '\n';
+                data += docs[i]["ip"] + '\n' + deduplicateAndSort(docs[i]["kwd_list"], 10) + '\n';
             }
             res.writeHead(200, {'Content-Type': 'text/plain'});
             res.write(data);
@@ -102,7 +119,7 @@ var server = http.createServer(function(req, res) {
             var kwd_called = query['kwd'];
             get_ipsforkwd(kwd_called, function(doc){
                 if (doc.length > 0) {
-                    data = deduplicateAndSort(doc[0]["ip_list"]);
+                    data = deduplicateAndSort(doc[0]["ip_list"], 0);
                     res.writeHead(200, {'Content-Type': 'text/plain'});
                     res.write(data + '\n');
                     res.end();
