@@ -7,7 +7,7 @@ A first API (post_api.js) is in charge of receiving the messages, and a second A
   
   
 ## Receiving API 
-This HTTP POST service has a unique method : **message**. The keywords must be sent in a field **keywords** in the query data.  
+This HTTP POST service is hosted on port 8080 and has a unique method : **message**. The keywords must be sent in a field **keywords** in the query data.  
   
     curl --data "keywords=cinema travels gastronomy" http://0.0.0.0:8080/message  
   
